@@ -7,7 +7,7 @@ namespace API.Entities
         //public string LastName { get; set; }
         public string UserName { get; set; }
         //public string City { get; set; }
-        public int Level { get; set; }
+        //public int Level { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt  { get; set; }
     }

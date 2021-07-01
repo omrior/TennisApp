@@ -13,7 +13,7 @@ namespace API.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserName = table.Column<string>(type: "TEXT", nullable: true),
-                    Level = table.Column<int>(type: "INTEGER", nullable: false)
+                    //Level = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
