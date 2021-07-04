@@ -1,14 +1,29 @@
+using System;
+using System.Collections.Generic;
+using API.Extensions;
+
 namespace API.Entities
 {
     public class AppUser
     {
         public int Id { get; set; }
-        //public string FirstName { get; set; }
-        //public string LastName { get; set; }
         public string UserName { get; set; }
-        //public string City { get; set; }
-        //public int Level { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt  { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Gender { get; set; }
+        public string City { get; set; }
+        public int Level { get; set; }
+        public int Points { get; set; }
+        public DateTime Create { get; set; } = DateTime.Now;
+        public DateTime LastActive { get; set; } = DateTime.Now;
+        public ICollection<Photo> Photos { get; set; }
+
+        // Method to calculate age base on the date of birth
+        public int GetAge() {
+            return DateOfBirth.CalculateAge();
+        }
     }
 }
