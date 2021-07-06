@@ -17,7 +17,7 @@ namespace API.Entities
         public string City { get; set; }
         public int Level { get; set; }
         public int Points { get; set; }
-        public DateTime Create { get; set; } = DateTime.Now;
+        public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
         public ICollection<Photo> Photos { get; set; }
 
