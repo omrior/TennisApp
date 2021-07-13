@@ -17,7 +17,7 @@
         }
       ]
     },
-    {
+    { 
       "UserName": "Oconnor",
       "Gender": "female",
       "DateOfBirth": "1962-03-24",
@@ -179,4 +179,4 @@
         }
         ]
     }
-  ]
+]
