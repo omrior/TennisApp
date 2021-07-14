@@ -7,7 +7,7 @@ namespace API.Interfaces
     {
         void update(AppUser user);
         Task<bool> SaveAllAsync();
-        Task<IEnumerable<AppUser>> GetUserAsync();
+        Task<IEnumerable<AppUser>> GetUsersAsync();
         Task<AppUser> GetElementByIdAsync(int id);
         Task<AppUser> GetElementByUsernameAsync(string username);
     }
