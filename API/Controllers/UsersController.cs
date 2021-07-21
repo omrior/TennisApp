@@ -35,14 +35,23 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams) // CHange return type from AppUser to MemberDto
         {
-            // var users = await _userRepository.GetUsersAsync();
-            // var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users); // We map the users to the MemberDto
-            // return Ok(usersToReturn); // Wrap it in Ok() response after change is made from context to userRepo
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            userParams.CurrentUsername = User.GetUsername();
+
+            if (string.IsNullOrEmpty(userParams.Gender))
+                userParams.Gender = user.Gender == "male" ? "male" : "female";
+
+            // if (string.IsNullOrEmpty(userParams.City))
+            //     userParams.City = user.City;
+
             var users = await _userRepository.GetMembersAsync(userParams);
 
             Response.AddPaginationHeader(users.CurrentPage, userParams.PageSize, users.TotalCount, users.TotalPages);
 
             return Ok(users);
+            // var users = await _userRepository.GetUsersAsync();
+            // var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users); // We map the users to the MemberDto
+            // return Ok(usersToReturn); // Wrap it in Ok() response after change is made from context to userRepo
         }
 
 
@@ -57,6 +66,7 @@ namespace API.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
         {
+            //var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
             _mapper.Map(memberUpdateDto, user);

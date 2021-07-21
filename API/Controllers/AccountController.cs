@@ -56,7 +56,9 @@ namespace API.Controllers
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                City = user.City,
+                Gender = user.Gender
             };
         }
 
@@ -88,7 +90,9 @@ namespace API.Controllers
                 Token = _tokenService.CreateToken(user),
                 // PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                City = user.City,
+                Gender = user.Gender
             };
         }
 

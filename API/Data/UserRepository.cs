@@ -60,11 +60,19 @@ namespace API.Data
 
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
-            var query = _context.Users
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .AsNoTracking();
+            var query = _context.Users.AsQueryable();
+                // .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                // .AsNoTracking()
+                // .AsQueryable();
 
-            return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
+            query = query.Where(u => u.UserName != userParams.CurrentUsername);
+            query = query.Where(u => u.Gender == userParams.Gender);
+            // query = query.Where(u => u.City == userParams.City);
+
+
+            return await PagedList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>
+                (_mapper.ConfigurationProvider).AsNoTracking(),
+                    userParams.PageNumber, userParams.PageSize);
         }
     }
 }
