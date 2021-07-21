@@ -6,6 +6,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -32,11 +33,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers() // CHange return type from AppUser to MemberDto
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams) // CHange return type from AppUser to MemberDto
         {
-            var users = await _userRepository.GetUsersAsync();
-            var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users); // We map the users to the MemberDto
-            return Ok(usersToReturn); // Wrap it in Ok() response after change is made from context to userRepo
+            // var users = await _userRepository.GetUsersAsync();
+            // var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users); // We map the users to the MemberDto
+            // return Ok(usersToReturn); // Wrap it in Ok() response after change is made from context to userRepo
+            var users = await _userRepository.GetMembersAsync(userParams);
+
+            Response.AddPaginationHeader(users.CurrentPage, userParams.PageSize, users.TotalCount, users.TotalPages);
+
+            return Ok(users);
         }
 
 
