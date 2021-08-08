@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TestErrorsComponent implements OnInit {
   baseUrl = 'https://localhost:5001/api/';
+  validationErrors: string[] = [];
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
@@ -52,7 +53,8 @@ export class TestErrorsComponent implements OnInit {
     this.http.get(this.baseUrl + 'account/register', {}).subscribe(response => {
       console.log(response);
     }, error => {
-    console.log(error);
+      console.log(error);
+      this.validationErrors = error;
     })
   }
 }
