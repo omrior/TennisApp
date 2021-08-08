@@ -1,8 +1,8 @@
-import { Photo } from "./Photo";
+import { Photo } from "./photo";
 
 export interface Member {
     id: number;
-    userName: string;
+    username: string;
     photoUrl: string;
     gender: string;
     age: number;
