@@ -14,9 +14,10 @@ namespace API.DTOs
         public string LastName { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
-        public int Level { get; set; }
+        public string LeagueLevel { get; set; }
         public int Points { get; set; }
         public string City { get; set; }
+        public string Experience { get; set; }
         public ICollection<PhotoDto> Photos { get; set; }
 
     }

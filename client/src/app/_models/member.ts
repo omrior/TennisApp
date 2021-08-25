@@ -10,9 +10,10 @@ export interface Member {
     lastName: string;
     created: Date;
     lastActive: Date;
-    level: number;
+    leagueLevel: string;
     points: number;
     city: string;
+    experience: string;
     photos: Photo[];
 }
 

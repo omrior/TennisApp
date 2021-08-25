@@ -16,9 +16,10 @@ namespace API.Entities
         public string LastName { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
-        public int Level { get; set; }
+        public string LeagueLevel { get; set; }
         public int Points { get; set; }
         public string City { get; set; }
+        public string Experience { get; set; }
         public ICollection<Photo> Photos { get; set; }
 
         // Method to calculate age base on the date of birth
