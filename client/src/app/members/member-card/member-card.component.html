@@ -2,7 +2,7 @@
 
 <div class="card mb-4">
     <div class="card-img-wrapper">
-        <img src="{{member.photoUrl}}" alt="{{member.firstName}} {{member.lastName}}" class="card-img-top">
+        <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.firstName}} {{member.lastName}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
             <!--#######################################################################################################-->
             <!-- 'white' will be replaced with interpelation of username: {{member.username}} part 108 under section 9 -->
